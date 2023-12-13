@@ -54,10 +54,8 @@ public class Automovil extends Vehiculo implements ConvertibleATexto {
 	 */
 	@Override
 	public String aTexto() {
-		return "Datos de automovil: Matricula: " + matricula + "\s" 
-	+ "Fecha de matriculacion: " + fechaMatriculacion.aTexto() + "\s" 
-	+ "Color: " + color + "\s"
-	+ "Num. Plazas" + plazas;
+		return "Matricula: " + matricula+", Fecha Matriculacion: " + fechaMatriculacion.aTexto() + ", color: " + color +", Num. Plazas: "+ plazas;
 	}
+	           
 
 }

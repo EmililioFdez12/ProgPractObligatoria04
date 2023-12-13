@@ -31,7 +31,11 @@ public class Vehiculo implements ConvertibleATexto {
 		if (validarMatricula(matricula) == true) {
 			vehiculosMatriculados++;
 			this.matricula = matricula;
-			this.fechaMatriculacion = fechaMatriculacion;
+			if (fechaMatriculacion == null) {
+			  throw new IllegalArgumentException();
+			  } else {
+			    this.fechaMatriculacion = fechaMatriculacion;
+			  }	
 		} else {
 			throw new IllegalArgumentException();
 		}
@@ -43,7 +47,7 @@ public class Vehiculo implements ConvertibleATexto {
 	 * 
 	 * @return
 	 */
-	public Fecha getFechaMatriculacion() {
+	public Fecha getFechaMatriculacion() {      
 		return fechaMatriculacion;
 	}
 

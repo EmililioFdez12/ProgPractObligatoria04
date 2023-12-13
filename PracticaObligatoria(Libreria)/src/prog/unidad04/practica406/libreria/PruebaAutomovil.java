@@ -4,13 +4,11 @@ public class PruebaAutomovil {
 
 	public static void main(String[] args) {
 		
-		Fecha fecha1 = new Fecha(1, 1, 2005);
+		Fecha fecha1 = new Fecha(1, 10, 2023);
 
-		Motocicleta coche1 = new Motocicleta("1234 ABC", fecha1, 50);
+		Automovil coche1 = new Automovil("1234 ABC", fecha1, "azul", 4);
 		
-		System.out.println(coche1.getCilindrada());
 		System.out.println(coche1.aTexto());
-
 	}
 
 }

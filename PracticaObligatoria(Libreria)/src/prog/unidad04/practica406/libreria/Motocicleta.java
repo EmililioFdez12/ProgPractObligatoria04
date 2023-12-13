@@ -39,9 +39,7 @@ public class Motocicleta extends Vehiculo implements ConvertibleATexto {
 	@Override
 	public String aTexto() {
 		
-		return "Matricula: " + matricula + "|\s"
-				+ "Fecha Matriculacion: " + fechaMatriculacion.aTexto() + "|\s"
-				+ "Cilindrada: " + cilindrada;
+		return "Matricula: " + matricula + ", Fecha Matriculacion: " + fechaMatriculacion.aTexto() + ", cilindrada: " + cilindrada;
 	}
 
 }
