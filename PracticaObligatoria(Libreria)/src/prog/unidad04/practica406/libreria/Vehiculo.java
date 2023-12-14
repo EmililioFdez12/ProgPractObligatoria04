@@ -73,8 +73,7 @@ public class Vehiculo implements ConvertibleATexto {
 	// Metodo privado para validar las matriculas
 	private boolean validarMatricula(String matricula) {
 		// Expresión regular para el formato NNNN AAA
-		String validacionMatricula = "\\d{4}\\s*[A-Z]{3}";
-
+		String validacionMatricula = "\\d{4}\\s*[A-Z]{3}";	
 		return matricula.matches(validacionMatricula);
 	}
 
