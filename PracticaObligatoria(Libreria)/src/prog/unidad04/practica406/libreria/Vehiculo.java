@@ -72,10 +72,34 @@ public class Vehiculo implements ConvertibleATexto {
 
 	// Metodo privado para validar las matriculas
 	private boolean validarMatricula(String matricula) {
-		// Expresión regular para el formato NNNN AAA
-		String validacionMatricula = "\\d{4}\\s*[A-Z]{3}";	
-		return matricula.matches(validacionMatricula);
-	}
+
+    String matriculaAValidar = matricula;
+
+    int contadorCaracteres = 0;
+    boolean caracterCorrecto = true;
+
+    matriculaAValidar = matriculaAValidar.replace(" ", "");
+
+    while (caracterCorrecto && contadorCaracteres < 7) {
+      if (contadorCaracteres <= 3) {
+        if (!Character.isDigit(matriculaAValidar.charAt(contadorCaracteres))) {
+          caracterCorrecto = false;
+        }
+      } else {
+        if (!Character.isUpperCase(matriculaAValidar.charAt(contadorCaracteres))) {
+          caracterCorrecto = false;
+        }
+
+        if(matriculaAValidar.length() != 7) {
+          caracterCorrecto = false;
+        }
+      }
+      contadorCaracteres++;
+    }
+
+    return caracterCorrecto;
+
+  }
 
 	@Override
 	public String aTexto() {

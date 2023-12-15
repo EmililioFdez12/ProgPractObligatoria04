@@ -28,35 +28,27 @@ public class Fecha implements ConvertibleATexto {
 	}
 
 	private boolean comprobarFecha(int dia, int mes, int anyo) {
+    if (dia < 1 || mes < 1 || mes > 12 || anyo < 1900) {
+        return false;
+    }
 
-		if (dia < 1 || mes < 1 || mes > 12 || anyo < 1900) {
-			return false;
-		}
+    int maximoDeDias;
 
-		int maximoDeDias;
-		boolean comprobacionF = true;
+    if (mes == 2) {
+        if (esBisiesto()) {
+            maximoDeDias = 29;
+        } else {
+            maximoDeDias = 28;
+        }
+    } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+        maximoDeDias = 30;
+    } else {
+        maximoDeDias = 31;
+    }
 
-		do {
-			if (mes == 2) {
-				if (esBisiesto() == true) {
-					maximoDeDias = 29;
-				} else {
-					maximoDeDias = 28;
-				}
+    return dia <= maximoDeDias;
+}
 
-			} else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
-				maximoDeDias = 30;
-			} else {
-				maximoDeDias = 31;
-			}
-			if (dia >= maximoDeDias) {
-				comprobacionF = false;
-			}
-
-		} while (comprobacionF = true);
-		return comprobacionF;
-
-	}
 
 
 	/**
