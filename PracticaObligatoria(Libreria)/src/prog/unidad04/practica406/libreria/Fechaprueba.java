@@ -4,7 +4,7 @@ public class Fechaprueba {
 
 	public static void main(String[] args) {
 		
-	 
+	  Fecha fecha1 = new Fecha(25,2,2019);
     Fecha fecha2 = new Fecha(29,2,2021);
    
 		System.out.println(fecha2.getDia());
@@ -16,6 +16,8 @@ public class Fechaprueba {
 //		System.out.println(fecha1.esBisiesto());
 	
 		System.out.println(fecha2.esBisiesto());
+		
+		System.out.println(fecha2.diasTranscurridos());
 	
 		
 		
