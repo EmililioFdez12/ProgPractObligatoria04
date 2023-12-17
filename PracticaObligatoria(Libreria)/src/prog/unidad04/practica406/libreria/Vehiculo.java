@@ -1,5 +1,8 @@
 package prog.unidad04.practica406.libreria;
 
+/**
+ * Clase que representa un vehículo
+ */
 public class Vehiculo implements ConvertibleATexto {
 
 	/**
@@ -19,14 +22,12 @@ public class Vehiculo implements ConvertibleATexto {
 
 	/**
 	 * Constructor protegido para que no pueda usarse para crear objetos desde
-	 * clases que no hereden de esta
-	 * 
-	 * @param matricula          Matricula del vehículo
+	 * clases que no hereden de esta 
+	 * @param matricula Matricula del vehículo
 	 * @param fechaMatriculacion Fecha de matriculacion del vehículo
-	 * @throws Si alguno de los parametros no es valido
+	 * @throws IllegalArgumentException - Si alguno de los parametros no es valido
 	 */
 	protected Vehiculo(String matricula, Fecha fechaMatriculacion) {
-
 		// Contamos el numero de matriculaciones
 		if (validarMatricula(matricula) == true) {
 			vehiculosMatriculados++;
@@ -39,13 +40,11 @@ public class Vehiculo implements ConvertibleATexto {
 		} else {
 			throw new IllegalArgumentException();
 		}
-
 	}
 
 	/**
 	 * Obtiene la fecha de matriculacion del vehículo
-	 * 
-	 * @return
+	 * @return La fecha de la Matriculacion
 	 */
 	public Fecha getFechaMatriculacion() {      
 		return fechaMatriculacion;
@@ -53,7 +52,6 @@ public class Vehiculo implements ConvertibleATexto {
 
 	/**
 	 * Obtiene la matricula del vehículo
-	 * 
 	 * @return La matricula
 	 */
 	public String getMatricula() {
@@ -63,7 +61,6 @@ public class Vehiculo implements ConvertibleATexto {
 
 	/**
 	 * Número de vehiculos matriculados hasta el momento
-	 * 
 	 * @return El numero de vehiculos matriculados
 	 */
 	public static int getVehiculosMatriculados() {
@@ -96,14 +93,11 @@ public class Vehiculo implements ConvertibleATexto {
       }
       contadorCaracteres++;
     }
-
     return caracterCorrecto;
-
   }
 
 	@Override
 	public String aTexto() {
 		return matricula;
 	}
-
 }

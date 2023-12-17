@@ -6,6 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/Emi/Desktop/LibreriaPractica.jar"/>
+	<classpathentry kind="src" path="/PracticaObligatoria(Libreria)"/>
+	<classpathentry kind="lib" path="C:/Users/Emi/Desktop/ProgPractObligatoria04/LibreriaVehiculos.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

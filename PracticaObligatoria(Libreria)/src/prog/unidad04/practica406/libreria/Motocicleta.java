@@ -8,10 +8,9 @@ public class Motocicleta extends Vehiculo implements ConvertibleATexto {
 	protected int cilindrada;
 
 	/**
-	 * 
-	 * @param matricula
-	 * @param fechaMatriculacion
-	 * @param cilindrada
+	 * @param matricula Matricula de la motocicleta
+	 * @param fechaMatriculacion Fecha de matriculacion de la Motocicleta
+	 * @param cilindrada Cilindrada de la motocicleta
 	 */
 	public Motocicleta(String matricula, Fecha fechaMatriculacion, int cilindrada) {
 		// Llamamos al constructor de vehiculo

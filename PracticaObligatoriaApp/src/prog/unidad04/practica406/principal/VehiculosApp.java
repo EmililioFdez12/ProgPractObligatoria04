@@ -1,13 +1,14 @@
 package prog.unidad04.practica406.principal;
 
 import java.time.LocalDate;
+
 import java.util.Scanner;
+
 import prog.unidad04.practica406.libreria.Automovil;
-import prog.unidad04.practica406.libreria.ConvertibleATexto;
-import prog.unidad04.practica406.libreria.Fecha;
-import prog.unidad04.practica406.libreria.FechaException;
 import prog.unidad04.practica406.libreria.Motocicleta;
+import prog.unidad04.practica406.libreria.Fecha;
 import prog.unidad04.practica406.libreria.Vehiculo;
+import prog.unidad04.practica406.libreria.ConvertibleATexto;
 
 public class VehiculosApp {
 
@@ -39,17 +40,19 @@ public class VehiculosApp {
 				System.out.print("Introduzca el año de la fecha de matriculación del automovil: ");
 				int añoMatriculacionAutomovil = Integer.parseInt(sc.nextLine());
 				
+				//Creamos la fecha si es correcta
 				fechaMatriculacionCoche = new Fecha(diaMatriculacionAutomovil, mesMatriculacionAutomovil,añoMatriculacionAutomovil);
 				} catch (IllegalArgumentException e) {
 					System.out.println("La fecha no es una fecha válida. Revise los valores e inténtelo de nuevo");
 				}
+				
+				//Pedimos la informacion adicional
 				System.out.print("Introduzca el color del automovil (blanco, negro o azul): ");
 				String colorAutomovil = sc.nextLine();
 				System.out.print("Introduzca el número de plazas del vehículo: ");
 				int plazasAutomovil = Integer.parseInt(sc.nextLine());
 
-				// Creo la fecha del coche y el coche
-				
+				// Creo el coche si todos los datos son correctos
 				coche = new Automovil(matriculaAutomovil, fechaMatriculacionCoche, colorAutomovil, plazasAutomovil);
 
 			} catch (IllegalArgumentException e) {
@@ -76,9 +79,7 @@ public class VehiculosApp {
 		
 		System.out.print("Introduzca la cilindrada de la motocicleta: ");
 		int cilindradaMoto = Integer.parseInt(sc.nextLine());
-
-		// Creo la fecha de la moto y la moto
-		
+		// Creo la moto si todo los datos son correctos
 		moto = new Motocicleta(matriculaMoto, fechaMatriculacionMoto, cilindradaMoto);
 		
 		} catch (IllegalArgumentException e) {

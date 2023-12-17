@@ -6,14 +6,16 @@ package prog.unidad04.practica406.libreria;
  */
 public class Fecha extends Object implements ConvertibleATexto {
 
-  private static int DIA_FECHA_INICIAL = 1;
-  private static int MES_FECHA_INICIAL = 1;
-  private static int ANYO_FECHA_INICIAL = 1900;
-
   private int dia;
   private int mes;
   private int anyo;
-
+  
+  /**
+   * 
+   * @param dia Dia del mes
+   * @param mes Mes del año
+   * @param anyo Año
+   */
   public Fecha(int dia, int mes, int anyo) {
     if (!comprobarFecha(dia, mes, anyo)) {
       throw new IllegalArgumentException();
@@ -23,6 +25,7 @@ public class Fecha extends Object implements ConvertibleATexto {
       this.anyo = anyo;
   }
 
+  //Metodo privado para comprobar  si una fecha es correcta.
   private boolean comprobarFecha(int dia, int mes, int anyo) {
     if (dia < 1 || mes < 1 || mes > 12 || anyo < 1900) {
       return false;
@@ -44,15 +47,12 @@ public class Fecha extends Object implements ConvertibleATexto {
   		
   		if(dia > maximoDeDias) {
   			comprobarF = false;
-  		}
-      
+  		}     
       return comprobarF;     
   }
 
-
   /**
    * Obtiene el dia
-   * 
    * @return Dia de la fecha
    */
   public int getDia() {
@@ -61,7 +61,6 @@ public class Fecha extends Object implements ConvertibleATexto {
 
   /**
    * Obtiene el mes
-   * 
    * @return Mes de la fecha
    */
   public int getMes() {
@@ -70,7 +69,6 @@ public class Fecha extends Object implements ConvertibleATexto {
 
   /**
    * Obtiene el año
-   * 
    * @return Año de la fecha
    */
   public int getAnyo() {
@@ -79,7 +77,6 @@ public class Fecha extends Object implements ConvertibleATexto {
 
   /**
    * Devuelve si el año es bisiesto o no
-   * 
    * @return true si es bisiesto, false si no
    */
   public boolean esBisiesto() {
@@ -90,11 +87,9 @@ public class Fecha extends Object implements ConvertibleATexto {
     return (anyo % 4 == 0 && anyo % 100 != 0) || (anyo % 400 == 0);
 }
 
-
   /**
    * Obtiene el numero de dias transcurridos entre la fecha y la fecha de inicio
    * del calendario (1/1/1900)
-   * 
    * @return Número de días transcurridos entre esta fecha y la fecha de inicio
    *         del calendario
    */
@@ -122,21 +117,16 @@ public class Fecha extends Object implements ConvertibleATexto {
             totalDias += 31;
         }
     }
-
     totalDias += (dia - 1);
-
     return totalDias;
 }
 
   /**
-   * 
    * @param fecha - Otra fecha posterior a esta
    * @return Número de días transcurridos entre esta fecha y la proporcionada
-   * @throws FechaException - Si la fecha proporcionada es anterior a ésta
-   * 
+   * @throws FechaException - Si la fecha proporcionada es anterior a esta
    */
-  public long diasEntre(Fecha fecha) {
-   
+  public long diasEntre(Fecha fecha) {  
   	Fecha fecha1 = new Fecha(dia,mes,anyo);
     Fecha otraFecha = new Fecha(fecha.dia,fecha.mes,fecha.anyo);
     long diasFecha1 = fecha1.diasTranscurridos();
@@ -147,30 +137,27 @@ public class Fecha extends Object implements ConvertibleATexto {
     	 return -diasTotales;  
     } else {
     	throw new FechaException();
-    }
-     
+    }    
   }
 
   /**
    * Compara esta fecha con otra
-   * 
-   * @param fecha Fecha con la que se quiere comparar ésta
-   * @return
+   * @param fecha Fecha con la que se quiere comparar esta
+   * @return Menor que 0 si esta fecha es anterior a la otra, 0 si las dos fechas son iguales y mayor que cero si esta fecha es posterior a la otra
    */
   public int compara(Fecha fecha) {
   	 Fecha fecha1 = new Fecha(dia,mes,anyo);
-     Fecha otraFecha = new Fecha(fecha.dia,fecha.mes,fecha.anyo);
-      
+     Fecha otraFecha = new Fecha(fecha.dia,fecha.mes,fecha.anyo);      
      if(fecha1.diasTranscurridos() < otraFecha.diasTranscurridos()){
     	 return -1;
      } else if (fecha1.diasTranscurridos() > otraFecha.diasTranscurridos()) {
     	 return 1;
      } else {
     	 return 0;
-     }
-   
+     }  
   }
 
+  //Pasamos la fecha al formato que se nos pide.Interfaz
   @Override
   public String aTexto() {
     if (this.mes == 1) {
@@ -200,7 +187,5 @@ public class Fecha extends Object implements ConvertibleATexto {
     } else {
       throw new IllegalArgumentException();
     }
-
   }
-
 }

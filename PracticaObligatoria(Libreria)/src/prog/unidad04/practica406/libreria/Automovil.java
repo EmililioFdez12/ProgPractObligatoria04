@@ -1,13 +1,33 @@
 package prog.unidad04.practica406.libreria;
 
-import prog.unidad04.practica406.libreria.Vehiculo;
-
+/**
+ * Clase que representa un automovil
+ */
 public class Automovil extends Vehiculo implements ConvertibleATexto {
 
+	/**
+	 * Plazad del automovil
+	 */
 	protected int plazas;
+	
+	/**
+	 * Color del automovil
+	 */
 	protected String color;
+	
+	/**
+	 * Color Azul
+	 */
 	public static final String COLOR_AZUL = "azul";
+	
+	/**
+	 * Color negro
+	 */
 	public static final String COLOR_NEGRO = "negro";
+	
+	/**
+	 * Color blanco
+	 */
 	public static final String COLOR_BLANCO = "blanco";
 
 	public Automovil(String matricula, Fecha fechaMatriculacion, String color, int plazas) {
@@ -55,7 +75,5 @@ public class Automovil extends Vehiculo implements ConvertibleATexto {
 	@Override
 	public String aTexto() {
 		return "Matricula: " + matricula+", Fecha Matriculacion: " + fechaMatriculacion.aTexto() + ", color: " + color +", Num. Plazas: "+ plazas;
-	}
-	           
-
+	}          
 }
