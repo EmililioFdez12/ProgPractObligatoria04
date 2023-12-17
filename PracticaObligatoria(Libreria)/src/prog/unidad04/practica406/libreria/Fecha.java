@@ -1,12 +1,10 @@
 package prog.unidad04.practica406.libreria;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 /**
  * Clase que representa una Fecha a partir del 1/1/1900
  */
-public class Fecha implements ConvertibleATexto {
+public class Fecha extends Object implements ConvertibleATexto {
 
   private static int DIA_FECHA_INICIAL = 1;
   private static int MES_FECHA_INICIAL = 1;
@@ -19,33 +17,36 @@ public class Fecha implements ConvertibleATexto {
   public Fecha(int dia, int mes, int anyo) {
     if (!comprobarFecha(dia, mes, anyo)) {
       throw new IllegalArgumentException();
-    }
+    }      
       this.dia = dia;
       this.mes = mes;
       this.anyo = anyo;
-    
-
   }
 
   private boolean comprobarFecha(int dia, int mes, int anyo) {
     if (dia < 1 || mes < 1 || mes > 12 || anyo < 1900) {
       return false;
     }
-      int maximoDeDias;
+      int maximoDeDias = 0;
+      boolean comprobarF = true;
 
-      if (mes == 2) {
-          if(esBisiesto()) {
-            maximoDeDias = 29;
-          } else {
-            maximoDeDias = 28;
-          }
-      } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
-          maximoDeDias = 30;
-      } else {
-          maximoDeDias = 31;
-      }
-
-      return dia <= maximoDeDias;
+  		if (mes == 2) {
+  			if (comprobarEsBisiesto(anyo)) {
+  				maximoDeDias = 29;
+  			} else {
+  				maximoDeDias = 28;
+  			}
+  		} else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+  			maximoDeDias = 30;
+  		} else {
+  			maximoDeDias = 31;
+  		}
+  		
+  		if(dia > maximoDeDias) {
+  			comprobarF = false;
+  		}
+      
+      return comprobarF;     
   }
 
 
@@ -82,7 +83,7 @@ public class Fecha implements ConvertibleATexto {
    * @return true si es bisiesto, false si no
    */
   public boolean esBisiesto() {
-    return (this.anyo % 4 == 0 && this.anyo % 100 != 0) || (this.anyo % 400 == 0);
+    return comprobarEsBisiesto(anyo);
   }
 
   private boolean comprobarEsBisiesto(int anyo) {
@@ -131,15 +132,23 @@ public class Fecha implements ConvertibleATexto {
    * 
    * @param fecha - Otra fecha posterior a esta
    * @return Número de días transcurridos entre esta fecha y la proporcionada
-   * @throws FechaException
+   * @throws FechaException - Si la fecha proporcionada es anterior a ésta
    * 
    */
   public long diasEntre(Fecha fecha) {
-    Fecha fecha1 = new Fecha(dia,mes,anyo);
+   
+  	Fecha fecha1 = new Fecha(dia,mes,anyo);
+    Fecha otraFecha = new Fecha(fecha.dia,fecha.mes,fecha.anyo);
     long diasFecha1 = fecha1.diasTranscurridos();
+    long diasOtraFecha = otraFecha.diasTranscurridos();
     
-    return diasFecha1;
-    
+    long diasTotales = diasFecha1 - diasOtraFecha;
+    if(diasTotales < 0) {
+    	 return -diasTotales;  
+    } else {
+    	throw new FechaException();
+    }
+     
   }
 
   /**
@@ -149,23 +158,17 @@ public class Fecha implements ConvertibleATexto {
    * @return
    */
   public int compara(Fecha fecha) {
-    LocalDate fechaDada = LocalDate.of(this.anyo, this.mes, this.dia);
-    LocalDate otraFecha = LocalDate.of(fecha.anyo, fecha.mes, fecha.dia);
-    LocalDate fechaInicial = LocalDate.of(ANYO_FECHA_INICIAL, MES_FECHA_INICIAL, DIA_FECHA_INICIAL);
-
-    // Calculamos los dias que hay desde el inicio del calendario con cada fecha, y
-    // despues las comparamos entre ellas
-    long fechaConstructor = Math.abs(ChronoUnit.DAYS.between(fechaDada, fechaInicial));
-    long fechaOtra = Math.abs(ChronoUnit.DAYS.between(otraFecha, fechaInicial));
-
-    if (fechaConstructor < fechaOtra) {
-      return -1;
-    } else if (fechaConstructor == fechaOtra) {
-      return 0;
-    } else {
-      return 1;
-    }
-
+  	 Fecha fecha1 = new Fecha(dia,mes,anyo);
+     Fecha otraFecha = new Fecha(fecha.dia,fecha.mes,fecha.anyo);
+      
+     if(fecha1.diasTranscurridos() < otraFecha.diasTranscurridos()){
+    	 return -1;
+     } else if (fecha1.diasTranscurridos() > otraFecha.diasTranscurridos()) {
+    	 return 1;
+     } else {
+    	 return 0;
+     }
+   
   }
 
   @Override
