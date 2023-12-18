@@ -60,7 +60,7 @@ public class VehiculosApp {
 			}
 		} while (coche == null);
 
-		
+	do {	
 		try {
 		// Pedida de datos de la moto
 		System.out.print("Introduce la matricula de la motocicleta (4 números, 0 o mas espacios y tres letras mayusculas): ");
@@ -85,8 +85,9 @@ public class VehiculosApp {
 		} catch (IllegalArgumentException e) {
 			System.out.println("No se pudo crear el automovil. Revise los datos para comprobar que todos son correctos");
 		}
-    
-		// Imprimir datos de los vehículos
+	} while (moto == null);
+	
+		// Utilizo el metodo para imprimir los datos de los vehículos
     imprimirDatos(coche, moto);
 
 		sc.close();
